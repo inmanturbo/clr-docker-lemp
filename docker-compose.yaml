@@ -13,6 +13,8 @@ services:
             - laravel-network
         volumes:
             - ./.local/var/lib/mysql:/var/lib/mysql
+            - ./.local/var/backups:/var/backups
+            - ./.local/var/seeds:/var/seeds
         user: "${UID}:${GID}"
     nginx:
         restart: always

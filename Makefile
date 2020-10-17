@@ -2,6 +2,10 @@ GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
 GCCMD?=up
 CFLAGS?=-d
+CP?=/usr/bin/cp
+CPFLAGS?=-prv
+CPSRC?=./.local/var/public/*
+CPDEST?=./public
 
 run:
 	$(GCC) $(GCCMD) $(GCCARGS)
@@ -28,7 +32,10 @@ build:
 make_restructure:
 	mv ./.tmp/* .
 	rm -rf ./.tmp
-	
+
+publish:
+	$(CP) $(CPFLAGS) $(CPSRC) $(CPDEST)
+
 clean:
 	rm -rf ./.local/var/lib/mysql/*
 	cp ./.local/etc/.gitignore ./.local/var/lib/mysql/
