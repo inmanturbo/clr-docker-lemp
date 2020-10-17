@@ -1,6 +1,6 @@
 FROM clearlinux/php-fpm
 
-VOLUME /var/www/html
+VOLUME /var/www
 
 RUN swupd bundle-add php-extras \
     && rm -rf /var/lib/swupd/*
