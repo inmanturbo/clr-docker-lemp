@@ -4,7 +4,7 @@ GCCMD=up
 GCCARGS=-d
 
 run:
-	$(BASH) ./run.sh
+	$(GCC) $(GCCMD) $(GCCARGS)
 
 down:
 	$(GCC) down
