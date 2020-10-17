@@ -4,7 +4,7 @@ GCCMD=up
 GCCARGS=-d
 
 run:
-	$(GCC) $(GCCMD) $(GCCARGS)
+	$(BASH) ./run.sh
 
 down:
 	$(GCC) down
@@ -29,6 +29,7 @@ reset:
 	git clean -f -d
 	rm -rf ./vendor
 	rm -rf ./bootstrap
+	rm -rf ./storage
 
 
 groups:

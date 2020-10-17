@@ -37,6 +37,7 @@ services:
         command: php-fpm
         networks:
             - laravel-network
+        user: "${UID}:${GID}"
 networks:
     laravel-network:
         driver: bridge
