@@ -10,7 +10,7 @@ down:
 	$(GCC) down
 
 install:
-	composer create-project --prefer-dist laravel/laravel
+	composer create-project --prefer-dist laravel/laravel ./.tmp
 	make make_restructure
 
 build:
@@ -18,7 +18,7 @@ build:
 
 make_restructure:
 	mv ./laravel/* .
-	rm -rf ./laravel
+	rm -rf ./tmp
 	
 clean:
 	sudo rm -rf ./.local/var/lib/mysql/*
