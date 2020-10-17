@@ -10,7 +10,7 @@ down:
 	$(GCC) down
 
 install:
-	composer create-project --prefer-dist laravel/laravel ./.tmp
+	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
 	make make_restructure
 
 build:
