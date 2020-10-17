@@ -1,7 +1,7 @@
-GCC=/usr/bin/docker-compose
-BASH=/bin/bash
-GCCMD=up
-GCCARGS=-d
+GCC?=/usr/bin/docker-compose
+BASH?=/bin/bash
+GCCMD?=up
+CFLAGS?=-d
 
 run:
 	$(GCC) $(GCCMD) $(GCCARGS)
