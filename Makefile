@@ -19,7 +19,7 @@ build:
 make_restructure:
 	mv ./laravel/* .
 	rm -rf ./laravel
-
+	
 clean:
 	sudo rm -rf ./.local/var/lib/mysql/*
 	sudo cp ./.local/etc/.gitignore ./.local/var/lib/mysql/
@@ -27,6 +27,7 @@ clean:
 reset:
 	git reset --hard 
 	git clean -f -d
+	rm -rf ./vendor
 
 groups:
 	make make_init
