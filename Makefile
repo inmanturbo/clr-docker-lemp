@@ -28,6 +28,8 @@ reset:
 	git reset --hard 
 	git clean -f -d
 	rm -rf ./vendor
+	rm -rf ./bootstrap
+
 
 groups:
 	make make_init
