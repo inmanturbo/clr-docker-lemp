@@ -15,6 +15,8 @@ install:
 
 build:
 	$(GCC) build laravel
+	$(GCC) build nginx
+	$(GCC) build db
 
 make_restructure:
 	mv ./.tmp/* .
