@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+    db:
+        image: clearlinux/mariadb:latest
+        restart: always
+        command: --bind-address=0.0.0.0
+        env_file: 
+            - mariadb.env
+        ports:
+            - "3306:3306"
+        networks:
+            - laravel-network
+        volumes:
+            - ./.local/var/lib/mysql:/var/lib/mysql
+    nginx:
+        restart: always
+        image: clearlinux/nginx:latest
+        ports:
+            - "8080:80"
+        links:
+            - laravel
+        volumes:
+            - ./:/var/www
+            - ./laravel.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - laravel-network
+    laravel:
+        restart: always
+        depends_on:
+            - db
+        build: .
+        restart: always
+        volumes:
+            - ./:/var/www
+        command: php-fpm
+        networks:
+            - laravel-network
+networks:
+    laravel-network:
+        driver: bridge
