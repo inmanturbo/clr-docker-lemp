@@ -18,7 +18,7 @@ build:
 
 make_restructure:
 	mv ./.tmp/* .
-	rm -rf ./tmp
+	rm -rf ./.tmp
 	
 clean:
 	sudo rm -rf ./.local/var/lib/mysql/*
