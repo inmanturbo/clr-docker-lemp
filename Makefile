@@ -21,8 +21,8 @@ make_restructure:
 	rm -rf ./.tmp
 	
 clean:
-	sudo rm -rf ./.local/var/lib/mysql/*
-	sudo cp ./.local/etc/.gitignore ./.local/var/lib/mysql/
+	rm -rf ./.local/var/lib/mysql/*
+	cp ./.local/etc/.gitignore ./.local/var/lib/mysql/
 
 reset:
 	git reset --hard 

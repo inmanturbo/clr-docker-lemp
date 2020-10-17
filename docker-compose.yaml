@@ -27,7 +27,6 @@ services:
             - ./.local/var/log/nginx/:/var/log/nginx
         networks:
             - laravel-network
-        user: "${UID}:${GID}"
     laravel:
         restart: always
         depends_on:
