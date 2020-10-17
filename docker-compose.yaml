@@ -23,6 +23,7 @@ services:
         volumes:
             - ./:/var/www
             - ./laravel.conf:/etc/nginx/conf.d/default.conf
+            - ./.local/var/log/nginx/:/var/log/nginx
         networks:
             - laravel-network
     laravel:
