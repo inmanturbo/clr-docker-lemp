@@ -17,7 +17,7 @@ build:
 	$(GCC) build laravel
 
 make_restructure:
-	mv ./laravel/* .
+	mv ./.tmp/* .
 	rm -rf ./tmp
 	
 clean:
