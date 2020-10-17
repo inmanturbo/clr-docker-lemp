@@ -2,7 +2,7 @@ FROM clearlinux/php-fpm
 
 VOLUME /var/www
 
-RUN swupd bundle-add php-extras \
+RUN swupd bundle-add php-extras unzip \
     && rm -rf /var/lib/swupd/*
 
 COPY ./php.ini /etc/php.d/php.ini
