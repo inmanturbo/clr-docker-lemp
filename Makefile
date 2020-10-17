@@ -1,20 +1,16 @@
+#!make
 GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
 GCCMD?=up
-CFLAGS?=-d
-CP?=/usr/bin/cp
-CPFLAGS?=-prv
-CPSRC?=./.local/var/public/*
-CPDEST?=./public
+GCFLAGS?=-d
+
+include make.env
 
 run:
 	$(GCC) $(GCCMD) $(GCCARGS)
 
 down:
 	$(GCC) down
-
-cptest:
-	$(GCC) run laravel php -r "file_exists('mariadb.env') || copy('mariadb.env.example', 'mariadb.env');"
 
 install:
 	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
@@ -34,6 +30,7 @@ make_restructure:
 	rm -rf ./.tmp
 
 publish:
+	make make_init
 	$(CP) $(CPFLAGS) $(CPSRC) $(CPDEST)
 
 clean:
@@ -53,4 +50,5 @@ groups:
 	$(BASH) ./groups.sh
 
 make_init:
+	$(GCC) run laravel php -r "file_exists('make.env') || copy('make.env.example', 'make.env');"
 	chmod +x ./*.sh
