@@ -25,7 +25,7 @@ clean:
 	cp ./.local/etc/.gitignore ./.local/var/lib/mysql/
 
 reset:
-	git reset --hard 
+	git reset --hard origin/master
 	git clean -f -d
 	rm -rf ./vendor
 	rm -rf ./bootstrap
