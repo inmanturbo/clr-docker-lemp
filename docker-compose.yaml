@@ -39,6 +39,8 @@ services:
         networks:
             - laravel-network
         user: "${UID}:${GID}"
+        env_file: 
+            - laravel.env
 networks:
     laravel-network:
         driver: bridge
