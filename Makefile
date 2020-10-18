@@ -11,7 +11,8 @@ GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
 GCCMD?=up
 GCCARGS?=-d
-
+test:
+	echo $(SRC)
 run:
 	make make_init
 	$(GCC) $(GCCMD) $(GCCARGS)
@@ -23,7 +24,7 @@ install:
 	make make_init
 	$(VCS) submodule add $(APP_REPO_URL)
 	$(GCC) run laravel composer install --prefer-dist
-	cd $(SRC); docker run --rm clearlinux/node npm install
+	docker run --rm -u $(shell id -u) --volume $(SRC):/ clearlinux/node npm install
 
 build:
 	make make_init
