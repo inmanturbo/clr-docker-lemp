@@ -69,6 +69,7 @@ tear_down:
 	make reset
 
 make_init:
+	$(CP) $(CPFLAGS) laravel.conf.example laravel.conf
 	$(CP) $(CPFLAGS) php.ini.example php.ini
 	$(CP) $(CPFLAGS) .env.example .env
 	$(CP) $(CPFLAGS) make.env.example make.env
