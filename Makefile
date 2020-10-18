@@ -5,7 +5,7 @@
 -include .env
 
 CP?=/usr/bin/cp
-CPFLAGS?=-prv
+CPFLAGS?=-prvn
 
 GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
@@ -21,8 +21,9 @@ down:
 
 install:
 	make make_init
-	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
-	make make_restructure
+	$(VCS) submodule add $(APP_REPO_URL)
+	$(GCC) run laravel composer install --prefer-dist
+	cd $(SRC); docker run --rm clearlinux/node npm install
 
 build:
 	make make_init
