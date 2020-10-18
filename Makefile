@@ -13,6 +13,7 @@ GCCMD?=up
 GCCARGS?=-d
 
 run:
+	make make_init
 	$(GCC) $(GCCMD) $(GCCARGS)
 
 down:
@@ -24,6 +25,7 @@ install:
 	make make_restructure
 
 build:
+	make make_init
 	$(GCC) build laravel
 	$(GCC) build nginx
 	$(GCC) build db
@@ -50,6 +52,7 @@ seed:
 	make make_load_seed
 
 build_up:
+	make make_init
 	make build
 	make down
 	make clean
@@ -60,6 +63,7 @@ build_up:
 	make seed
 
 tear_down:
+	make make_init
 	make down
 	make clean
 	make reset
