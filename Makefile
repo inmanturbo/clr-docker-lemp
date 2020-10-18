@@ -74,7 +74,7 @@ make_get_seed:
 
 make_load_seed:
 	make make_init
-	$(GCC) run db mysql -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < $(MYSQL_SEED_PATH)
+	$(GCC) run db mysql -h db -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < $(MYSQL_SEED_PATH)
 
 make_groups:
 	make make_init
