@@ -29,10 +29,6 @@ build:
 	$(GCC) build nginx
 	$(GCC) build db
 
-make_restructure:
-	mv ./.tmp/* .
-	rm -rf ./.tmp
-
 publish:
 	make make_init
 	$(CP) $(CPFLAGS) $(CPSRC) $(CPDEST)
@@ -48,18 +44,41 @@ reset:
 	rm -rf ./bootstrap
 	rm -rf ./storage
 
-get_seed:
+seed:
+	make get_seed
+	make load_seed
+
+build_up:
+	make build
+	make down
+	make clean
+	make reset
+	make install
+	make publish
+	make run
+	make seed
+
+tear_down:
+	make down
+	make clean
+	make reset
+
+make_get_seed:
 	make make_init
 	cd $(LOCAL_SEEDS_DIR); $(VCS) $(VCCMD) $(VCFLAGS) $(VCARGS) $(VC_URL)
 
-seed:
+make_load_seed:
 	make make_init
 	$(GCC) run db mysql -u $(MYSQL_USER) -p $(MYSQL_PASSWORD) $(MYSQL_DATABASE) < $(MYSQL_SEED_PATH)
 
-groups:
+make_groups:
 	make make_init
 	$(BASH) ./groups.sh
 
 make_init:
 	$(GCC) run laravel php -r "file_exists('make.env') || copy('make.env.example', 'make.env');"
 	chmod +x ./*.sh
+
+make_restructure:
+	mv ./.tmp/* .
+	rm -rf ./.tmp
