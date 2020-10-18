@@ -11,7 +11,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && mkdir  -p  /usr/local/bin \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');" \
-    && chown -R ${USER_ID}:${GROUP_ID} ./.composer
+    && chown -R ${USER_ID}:${GROUP_ID} /.composer
 
 # COPY docker-entrypoint.sh /usr/local/bin/
 # ENTRYPOINT ["docker-entrypoint.sh"]
