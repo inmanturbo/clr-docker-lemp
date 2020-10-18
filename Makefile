@@ -5,7 +5,7 @@
 -include .env
 
 CP?=/usr/bin/cp
-CPFLAGS?=-prv
+CPFLAGS?=-prvn
 
 GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
@@ -69,6 +69,7 @@ tear_down:
 	make reset
 
 make_init:
+	$(CP) $(CPFLAGS) php.ini.example php.ini
 	$(CP) $(CPFLAGS) .env.example .env
 	$(CP) $(CPFLAGS) make.env.example make.env
 	$(CP) $(CPFLAGS) laravel.env.example laravel.env
