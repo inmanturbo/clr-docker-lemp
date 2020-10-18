@@ -24,7 +24,6 @@ install:
 	make make_init
 	$(VCS) submodule add $(APP_REPO_URL)
 	$(GCC) run laravel composer install --prefer-dist
-	docker run --rm -u $(shell id -u):$(shell id -g) --volume $(shell pwd)/laravel:/app -w /app clearlinux/node npm install
 
 build:
 	make make_init
