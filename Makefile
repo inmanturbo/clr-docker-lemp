@@ -5,7 +5,6 @@ GCCMD?=up
 GCFLAGS?=-d
 
 include make.env
-include laravel.env
 include mariadb.env
 
 
