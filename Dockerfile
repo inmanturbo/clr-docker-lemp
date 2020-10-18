@@ -15,3 +15,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 # ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 9000
 CMD ["php-fpm"]
+
+
