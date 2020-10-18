@@ -16,6 +16,7 @@ down:
 	$(GCC) down
 
 install:
+	make make_init
 	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
 	make make_restructure
 	$(GCC) run laravel php -r "file_exists('mariadb.env') || copy('mariadb.env.example', 'mariadb.env');"
