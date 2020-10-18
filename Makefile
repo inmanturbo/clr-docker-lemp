@@ -1,12 +1,13 @@
 #!make
-GCC?=/usr/bin/docker-compose
-BASH?=/bin/bash
-GCCMD?=up
-GCFLAGS?=-d
 
 include make.env
 include mariadb.env
+include .env
 
+GCC?=/usr/bin/docker-compose
+BASH?=/bin/bash
+GCCMD?=up
+GCCARGS?=-d
 
 run:
 	$(GCC) $(GCCMD) $(GCCARGS)
