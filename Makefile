@@ -45,8 +45,8 @@ reset:
 	rm -rf ./storage
 
 seed:
-	make get_seed
-	make load_seed
+	make make_get_seed
+	make make_load_seed
 
 build_up:
 	make build
