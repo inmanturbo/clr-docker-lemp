@@ -430,7 +430,7 @@ default_socket_timeout = 60
 max_input_vars=4000
 extension=imagick.so
 extension=mailparse.so
-
+extension=zmq.so
 
 
 
