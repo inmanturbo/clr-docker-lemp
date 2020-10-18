@@ -11,8 +11,7 @@ GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
 GCCMD?=up
 GCCARGS?=-d
-test:
-	echo $(SRC)
+
 run:
 	make make_init
 	$(GCC) $(GCCMD) $(GCCARGS)
