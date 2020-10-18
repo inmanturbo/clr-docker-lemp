@@ -431,6 +431,7 @@ max_input_vars=4000
 extension=imagick.so
 extension=mailparse.so
 extension=zmq.so
+extension=redis.so
 
 
 
