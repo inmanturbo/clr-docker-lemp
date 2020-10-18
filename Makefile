@@ -5,6 +5,9 @@ GCCMD?=up
 GCFLAGS?=-d
 
 include make.env
+include laravel.env
+include mariadb.env
+
 
 run:
 	$(GCC) $(GCCMD) $(GCCARGS)
@@ -44,6 +47,13 @@ reset:
 	rm -rf ./bootstrap
 	rm -rf ./storage
 
+get_seed:
+	make make_init
+	cd $(LOCAL_SEEDS_DIR); $(VCS) $(VCCMD) $(VCFLAGS) $(VCARGS) $(VC_URL)
+
+seed:
+	make make_init
+	$(GCC) run db mysql -u $(MYSQL_USER) -p $(MYSQL_PASSWORD) $(MYSQL_DATABASE) < $(MYSQL_SEED_PATH)
 
 groups:
 	make make_init
