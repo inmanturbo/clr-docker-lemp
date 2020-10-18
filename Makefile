@@ -62,6 +62,9 @@ tear_down:
 	make clean
 	make reset
 
+make_init:
+	$(GCC) run laravel php -r "file_exists('make.env') || copy('make.env.example', 'make.env');"
+
 make_get_seed:
 	make make_init
 	cd $(LOCAL_SEEDS_DIR); $(VCS) $(VCCMD) $(VCFLAGS) $(VCARGS) $(VC_URL)
@@ -73,10 +76,6 @@ make_load_seed:
 make_groups:
 	make make_init
 	$(BASH) ./groups.sh
-
-make_init:
-	$(GCC) run laravel php -r "file_exists('make.env') || copy('make.env.example', 'make.env');"
-	chmod +x ./*.sh
 
 make_restructure:
 	mv ./.tmp/* .
