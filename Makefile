@@ -69,7 +69,7 @@ tear_down:
 	make reset
 
 make_init:
-	$(CP) $(CPFLAGS).env.example .env
+	$(CP) $(CPFLAGS) .env.example .env
 	$(CP) $(CPFLAGS) make.env.example make.env
 	$(CP) $(CPFLAGS) laravel.env.example laravel.env
 	$(CP) $(CPFLAGS) mariadb.env.example mariadb.env
