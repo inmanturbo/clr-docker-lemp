@@ -1,8 +1,11 @@
 #!make
 
-include make.env
-include mariadb.env
-include .env
+-include make.env
+-include mariadb.env
+-include .env
+
+CP?=/usr/bin/cp
+CPFLAGS?=-prv
 
 GCC?=/usr/bin/docker-compose
 BASH?=/bin/bash
@@ -19,10 +22,6 @@ install:
 	make make_init
 	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
 	make make_restructure
-	$(GCC) run laravel php -r "file_exists('mariadb.env') || copy('mariadb.env.example', 'mariadb.env');"
-	$(GCC) run laravel php -r "file_exists('laravel.env') || copy('laravel.env.example', 'laravel.env');"
-	$(GCC) run laravel php -r "file_exists('laravel.conf') || copy('laravel.conf.example', 'laravel.conf');"
-	$(GCC) run laravel php -r "file_exists('php.ini') || copy('php.ini.example', 'php.ini');"
 
 build:
 	$(GCC) build laravel
@@ -66,7 +65,10 @@ tear_down:
 	make reset
 
 make_init:
-	$(GCC) run laravel php -r "file_exists('make.env') || copy('make.env.example', 'make.env');"
+	$(CP) $(CPFLAGS).env.example .env
+	$(CP) $(CPFLAGS) make.env.example make.env
+	$(CP) $(CPFLAGS) laravel.env.example laravel.env
+	$(CP) $(CPFLAGS) mariadb.env.example mariadb.env
 
 make_get_seed:
 	make make_init
