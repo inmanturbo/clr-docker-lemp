@@ -36,7 +36,7 @@ services:
         build: .
         restart: always
         volumes:
-            - ./:/var/www/html
+            - ./${SRC}:/var/www/html
         command: php-fpm
         networks:
             - laravel-network
