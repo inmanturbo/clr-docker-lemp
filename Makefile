@@ -68,7 +68,7 @@ make_init:
 
 make_get_seed:
 	make make_init
-	cd $(LOCAL_SEEDS_DIR); $(VCS) $(VCCMD) $(VCFLAGS) $(VCARGS) $(VC_URL)
+	cd $(LOCAL_SEEDS_DIR); $(VCS) $(VCSCMD) $(VCFLAGS) $(VCARGS) $(VC_URL)
 
 make_load_seed:
 	make make_init
