@@ -24,7 +24,7 @@ services:
         links:
             - laravel
         volumes:
-            - ./:/var/www/html
+            - ${SRC}:/var/www/html
             - ./laravel.conf:/etc/nginx/conf.d/default.conf
             - ./.local/var/log/nginx/:/var/log/nginx
         networks:

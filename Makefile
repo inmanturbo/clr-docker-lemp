@@ -41,7 +41,7 @@ clean:
 	cp ./.local/etc/.gitignore ./.local/var/seeds/
 
 reset:
-	git reset --hard origin/v1
+	git reset --hard origin/master
 	git clean -f -d
 	rm -rf ./vendor
 	rm -rf ./bootstrap
