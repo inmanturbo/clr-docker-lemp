@@ -15,7 +15,7 @@ services:
             - ./.local/var/lib/mysql:/var/lib/mysql
             - ./.local/var/backups:/var/backups
             - ./.local/var/seeds:/var/seeds
-        user: "${UID}:${GID}"
+        user: "${USER_ID}:${GROUP_ID}"
     nginx:
         restart: always
         image: clearlinux/nginx:latest
@@ -40,7 +40,7 @@ services:
         command: php-fpm
         networks:
             - laravel-network
-        user: "${UID}:${GID}"
+        user: "${USER_ID}:${GROUP_ID}"
         env_file: 
             - laravel.env
 networks:
