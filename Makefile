@@ -21,8 +21,9 @@ down:
 
 install:
 	make make_init
-	$(VCS) submodule add $(APP_REPO_URL)
-	$(GCC) run laravel composer install --prefer-dist
+	$(GCC) run laravel composer create-project --prefer-dist laravel/laravel ./.tmp
+	make make_restructure
+	
 
 build:
 	make make_init

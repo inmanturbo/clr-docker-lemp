@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yaml
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/clrlaraveldocker_laravel-network: "true"
+        io.kompose.service: db
+    spec:
+      containers:
+      - args:
+        - --bind-address=0.0.0.0
+        env:
+        - name: GROUP_ID
+          value: ${GID}
+        - name: MYSQL_DATABASE
+          value: laravel
+        - name: MYSQL_PASSWORD
+          value: laravel
+        - name: MYSQL_ROOT_PASSWORD
+          value: laravel
+        - name: MYSQL_SEED_PATH
+          value: ./.local/var/seeds/clr-lemp-data/laravel.sql
+        - name: MYSQL_USER
+          value: laravel
+        - name: USER_ID
+          value: ${UID}
+        image: clearlinux/mariadb:latest
+        imagePullPolicy: ""
+        name: db
+        ports:
+        - containerPort: 3306
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: db-claim0
+        - mountPath: /var/backups
+          name: db-claim1
+        - mountPath: /var/seeds
+          name: db-claim2
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: db-claim0
+        persistentVolumeClaim:
+          claimName: db-claim0
+      - name: db-claim1
+        persistentVolumeClaim:
+          claimName: db-claim1
+      - name: db-claim2
+        persistentVolumeClaim:
+          claimName: db-claim2
+status: {}

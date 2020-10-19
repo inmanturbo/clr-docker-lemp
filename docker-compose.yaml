@@ -35,7 +35,11 @@ services:
             - redis
         depends_on:
             - db
-        build: .
+        build:
+            context: .
+            args: 
+                USER_ID: ${USER_ID}
+                GROUP_ID: ${GROUP_ID}
         restart: always
         volumes:
             - ./${SRC}:/var/www/html
