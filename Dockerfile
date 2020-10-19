@@ -16,7 +16,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');"
 # COPY docker-entrypoint.sh /usr/local/bin/
 # ENTRYPOINT ["docker-entrypoint.sh"]
-RUN useradd -u ${USER_ID} -g ${GROUP_ID} laravel
+RUN useradd -u ${USER_ID} laravel
 EXPOSE 9000
 CMD ["php-fpm"]
 
