@@ -8,7 +8,7 @@ wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.env.ex
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/make.env.example \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/mariadb.env.example \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/php.ini.example \
- && mkdir -p .local/
+ && mkdir -p .local/ \
  && cd .local/ \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/home/.gitignore \
