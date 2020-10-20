@@ -4,6 +4,3 @@
     - everything needed for modern frameworks like laravel
     - also includes imagick, mailparse, redis, and zmq
     - escape dependency hell with bundles!
-
-
-
