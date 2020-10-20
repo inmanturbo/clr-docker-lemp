@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# download gist for existing laravel projects
 wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.env.example \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/Dockerfile \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/docker-compose.yaml \
