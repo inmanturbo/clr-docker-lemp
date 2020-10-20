@@ -16,6 +16,9 @@ run:
 	make make_init
 	$(GCC) $(GCCMD) $(GCCARGS)
 
+up:
+	make run
+
 down:
 	$(GCC) down
 
@@ -74,7 +77,6 @@ make_init:
 	$(CP) $(CPFLAGS) php.ini.example php.ini
 	$(CP) $(CPFLAGS) .env.example .env
 	$(CP) $(CPFLAGS) make.env.example make.env
-	$(CP) $(CPFLAGS) laravel.env.example laravel.env
 	$(CP) $(CPFLAGS) mariadb.env.example mariadb.env
 
 make_get_seed:

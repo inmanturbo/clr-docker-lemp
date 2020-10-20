@@ -47,8 +47,6 @@ services:
         networks:
             - laravel-network
         user: "${USER_ID}:${GROUP_ID}"
-        env_file: 
-            - laravel.env
     redis:
         image: clearlinux/redis
         command: redis-server --requirepass ${REDIS_PASSWORD}
