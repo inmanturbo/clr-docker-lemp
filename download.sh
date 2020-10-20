@@ -4,18 +4,35 @@ wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.env.ex
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/Dockerfile \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/docker-compose.yaml \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/laravel.conf.example \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/laravel.env.example \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/make.env.example \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/mariadb.env.example \
  && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/php.ini.example \
- && mkdir -p .local/ \
- && cd .local/ \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/home/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/mnt/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/usr/bin/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/var/backups/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/var/lib/mysql/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/var/log/nginx/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/var/public/.gitignore \
- && wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/var/seeds/.gitignore
+ && mkdir -p .local/{etc,home,mnt} \
+ && mkdir -p .local/usr/bin \
+ && mkdir -p .local/var/{backups,public,seeds} \
+ && mkdir -p .local/var/lib/mysql \
+ && mkdir -p .local/var/log/nginx \
+ && \
+ for dir in etc home mnt; \
+   do \
+     cd .local/${dir}; \
+     wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore; \
+     cd .. ; cd ..; \
+ done \
+ && \
+ for dir in backups public seeds; \
+   do \
+     cd .local/var/${dir}; \
+       wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore; \
+       cd ..; cd ..; cd ..; \
+done \
+&& \
+cd .local/var/lib/mysql \
+&& wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore \
+&& cd ../../../usr/bin \
+&& wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore \
+&& cd ../../var/log/nginx \
+&& wget https://raw.githubusercontent.com/inmanturbo/clr-docker-lemp/master/.local/etc/.gitignore \
+&& cd .. \
+    && cd .. \
+        && cd .. \
+            && cd .. # :-)
